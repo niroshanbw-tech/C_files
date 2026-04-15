@@ -1,4 +1,4 @@
-name: Compile C Program
+name: Build and Upload C Program
 
 on:
   push:
@@ -18,5 +18,11 @@ jobs:
       - name: Compile main.c
         run: gcc main.c -o main
 
-      - name: Run program
+      - name: Run program (for logs)
         run: ./main
+
+      - name: Upload compiled binary
+        uses: actions/upload-artifact@v4
+        with:
+          name: compiled-program
+          path: main
